@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="blinkid-cordova-extensions"
+        version="0.0.1"
+        xmlns="http://apache.org/cordova/ns/plugins/1.0"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+    <name>BlinkIdScannerExtensions</name>
+
+    <engines>
+        <engine name="cordova" version=">=7.0.0" />
+        <engine name="cordova-android" version=">=7.0.0" />
+    </engines>
+
+    <dependency id="blinkid-cordova" version=">=4.10.0" />
+
+    <js-module name="BlinkIDExtensionsScanner" src="www/blinkIdExtensionsScanner.js">
+        <clobbers target="cordova.plugins.BlinkIDExtensions" />
+    </js-module>
+
+    <platform name="android">
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="BlinkIDExtensionsScanner">
+                <param name="android-package" value="com.phonegap.plugins.microblinkextensions.DirectApiScanner" />
+            </feature>
+        </config-file>
+
+        <config-file target="src/android/res/values/strings.xml" parent="/resources">
+            <string name="dialog_storage_permission_read_request_message">Storage access is necessary to scan an existing image.</string>
+        </config-file>
+
+        <config-file target="app/src/main/AndroidManifest.xml" parent="/manifest">
+            <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+        </config-file>
+
+        <config-file target="app/src/main/AndroidManifest.xml" parent="/manifest/application">
+            <activity
+                android:name="com.microblinkextensions.activity.DirectApiActivity"
+                android:theme="@style/AppThemeTranslucent"
+            />
+        </config-file>
+
+        <!-- <edit-config file="app/src/main/AndroidManifest.xml" target="/manifest/application/activity[android:name='com.microblink.activity.ScanCard']" mode="merge">
+          <activity android:theme="" />
+        </edit-config> -->
+
+        <framework src="androidx.appcompat:appcompat:1.0.2" />
+
+        <source-file src="src/android/java/com/phonegap/plugins/microblinkextensions/DirectApiScanner.java" target-dir="src/com/phonegap/plugins/microblinkextensions" />
+        <source-file src="src/android/java/com/microblinkextensions/activity/DirectApiActivity.java" target-dir="src/com/microblinkextensions/activity" />
+
+        <resource-file src="src/android/res/values/bce_styles.xml" target="res/values/bce_styles.xml" />
+    </platform>
+    <platform name="ios">
+        <dependency id="cordova-plugin-add-swift-support" />
+
+        <config-file target="config.xml" parent="/*">
+            <feature name="BlinkIDExtensionsScanner">
+                <param name="ios-package" value="DirectApiScanner" />
+            </feature>
+        </config-file>
+
+        <preference name="PHOTO_LIBRARY_USAGE_DESCRIPTION" default=" " />
+        <config-file target="*-Info.plist" parent="NSPhotoLibraryUsageDescription">
+            <string>$PHOTO_LIBRARY_USAGE_DESCRIPTION</string>
+        </config-file>
+
+        <header-file src="src/ios/BlinkIDExtensionsScanner-Bridging-Header.h" />
+
+        <source-file src="src/ios/DirectApiScanner.swift" />
+    </platform>
+</plugin>

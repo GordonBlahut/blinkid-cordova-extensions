@@ -1,0 +1,58 @@
+{
+  "private": true,
+  "author": {
+    "name": "Web Wizards"
+  },
+  "bundleDependencies": false,
+  "cordova": {
+    "id": "blinkid-cordova-extensions",
+    "platforms": [
+      "android",
+      "ios"
+    ]
+  },
+  "deprecated": false,
+  "description": "Extensions for a small and powerful ID card scanning library, including direct API scanner",
+  "engines": [
+    {
+      "name": "cordova",
+      "version": ">=7.0.0"
+    },
+    {
+      "name": "cordova-android",
+      "version": ">=7.0.0"
+    },
+    {
+      "name": "cordova-ios",
+      "version": ">=4.4.0"
+    }
+  ],
+  "keywords": [
+    "scan",
+    "id",
+    "scanner",
+    "identity",
+    "ID",
+    "passport",
+    "sdk",
+    "ocr",
+    "USDL",
+    "PDF417",
+    "MRZ",
+    "MRTD",
+    "barcode",
+    "DL",
+    "card",
+    "document",
+    "microblink",
+    "blinkid",
+    "ionic",
+    "phonegap",
+    "ecosystem:cordova",
+    "cordova-android",
+    "cordova-ios"
+  ],
+  "license": "MIT",
+  "name": "blinkid-cordova-extensions",
+  "version": "0.0.3"
+}
