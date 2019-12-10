@@ -1,4 +1,4 @@
-import MicroBlink
+import Microblink
 import UIKit
 import MobileCoreServices
 
