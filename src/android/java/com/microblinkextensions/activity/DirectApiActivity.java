@@ -65,14 +65,7 @@ public class DirectApiActivity extends AppCompatActivity implements ActivityComp
         Intent intent = getIntent();
         mRecognizerBundle.loadFromIntent(intent);
 
-        try {
-            // get the recognizer runner instance
-            mRecognizerRunner = RecognizerRunner.getSingletonInstance();
-        } catch (FeatureNotSupportedException e) {
-            Toast.makeText(this, "Feature not supported! Reason: " + e.getReason().getDescription(), Toast.LENGTH_LONG).show();
-            finish();
-            return;
-        }
+        mRecognizerRunner = RecognizerRunner.getSingletonInstance();
 
         initializeRecognizer();
     }
