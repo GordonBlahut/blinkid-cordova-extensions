@@ -17,11 +17,12 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
+
+import com.google.android.material.dialog;
 
 import com.microblink.directApi.DirectApiErrorListener;
 import com.microblink.directApi.RecognizerRunner;
@@ -119,6 +120,8 @@ public class DirectApiActivity extends AppCompatActivity implements ActivityComp
             if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 // Permission Granted
                 getImage();
+            } else {
+                finish();
             }
         }
     }
@@ -128,10 +131,10 @@ public class DirectApiActivity extends AppCompatActivity implements ActivityComp
 
         if (ContextCompat.checkSelfPermission(DirectApiActivity.this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
             if (ActivityCompat.shouldShowRequestPermissionRationale(DirectApiActivity.this, Manifest.permission.READ_EXTERNAL_STORAGE)) {
-                new AlertDialog.Builder(DirectApiActivity.this)
+                new MaterialAlertDialogBuilder(DirectApiActivity.this)
                         .setMessage(getResources().getIdentifier("dialog_storage_permission_read_request_message", "string", getPackageName()))
                         .setPositiveButton(android.R.string.ok, (DialogInterface dialogInterface, int i) -> ActivityCompat.requestPermissions(DirectApiActivity.this, new String[]{ Manifest.permission.READ_EXTERNAL_STORAGE}, PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE))
-                        .setNegativeButton(android.R.string.cancel, null)
+                        .setNegativeButton(android.R.string.cancel, (DialogInterface dialogInterface, int i) -> DirectApiActivity.this.finish())
                         .create()
                         .show();
             } else {
