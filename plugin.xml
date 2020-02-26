@@ -43,6 +43,7 @@
         </edit-config> -->
 
         <framework src="androidx.appcompat:appcompat:1.0.2" />
+        <framework src="com.google.android.material:material:1.1.0" />
 
         <source-file src="src/android/java/com/phonegap/plugins/microblinkextensions/DirectApiScanner.java" target-dir="src/com/phonegap/plugins/microblinkextensions" />
         <source-file src="src/android/java/com/microblinkextensions/activity/DirectApiActivity.java" target-dir="src/com/microblinkextensions/activity" />
