@@ -203,6 +203,9 @@ public class DirectApiActivity extends AppCompatActivity implements ActivityComp
                         finish();
                         return;
                     }
+                    @Override
+                    public void onUnrecoverableError(@NonNull Throwable throwable) {
+                    }
                 });
             } catch (Exception e) {
                 e.printStackTrace();
