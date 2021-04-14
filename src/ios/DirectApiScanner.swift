@@ -18,7 +18,7 @@ import MobileCoreServices
     let jsonLicenses = sanitizeDictionary(command.arguments[1] as? [String: Any] ?? [:])
 
     setLicense(jsonLicenses)
-    recognizerCollection = MBRecognizerSerializers.sharedInstance().deserializeRecognizerCollection(jsonRecognizerCollection)
+    recognizerCollection = MBRecognizerSerializers.shared().deserializeRecognizerCollection(jsonRecognizerCollection)
 
     setupRecognizerRunner()
     openImagePicker()
@@ -37,16 +37,18 @@ import MobileCoreServices
 
   func setLicense(_ jsonLicense: [String: Any]) {
     if let showTimeLimitedLicenseKeyWarning = jsonLicense["showTimeLimitedLicenseKeyWarning"] as? Bool {
-      MBMicroblinkSDK.sharedInstance().showLicenseKeyTimeLimitedWarning = showTimeLimitedLicenseKeyWarning
+      MBMicroblinkSDK.shared().showLicenseKeyTimeLimitedWarning = showTimeLimitedLicenseKeyWarning
     }
 
     let iosLicense = jsonLicense["ios"] as! String
 
     if let licensee = jsonLicense["licensee"] as? String {
-      MBMicroblinkSDK.sharedInstance().setLicenseKey(iosLicense, andLicensee: licensee)
+      MBMicroblinkSDK.shared().setLicenseKey(iosLicense, andLicensee: licensee) { (MBLicenseError) in {
+      }
     }
     else {
-      MBMicroblinkSDK.sharedInstance().setLicenseKey(iosLicense)
+      MBMicroblinkSDK.shared().setLicenseKey(iosLicense) { (MBLicenseError) in
+      }
     }
   }
 
