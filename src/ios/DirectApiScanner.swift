@@ -36,8 +36,8 @@ import MobileCoreServices
   }
 
   func setLicense(_ jsonLicense: [String: Any]) {
-    if let showTimeLimitedLicenseKeyWarning = jsonLicense["showTimeLimitedLicenseKeyWarning"] as? Bool {
-      MBMicroblinkSDK.shared().showLicenseKeyTimeLimitedWarning = showTimeLimitedLicenseKeyWarning
+    if let showTrialLicenseWarning = jsonLicense["showTrialLicenseKeyWarning"] as? Bool {
+      MBMicroblinkSDK.shared().showTrialLicenseWarning = showTrialLicenseWarning
     }
 
     let iosLicense = jsonLicense["ios"] as! String

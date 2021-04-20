@@ -100,8 +100,8 @@ public class DirectApiScanner extends CordovaPlugin {
     }
 
     private void setLicense( JSONObject jsonLicense ) throws JSONException {
-        MicroblinkSDK.setShowTimeLimitedLicenseWarning(
-                jsonLicense.optBoolean("showTimeLimitedLicenseKeyWarning", true)
+        MicroblinkSDK.setShowTrialLicenseWarning(
+                jsonLicense.optBoolean("showTrialLicenseKeyWarning", true)
         );
         String androidLicense = jsonLicense.getString("android");
         String licensee = jsonLicense.optString("licensee", null);
