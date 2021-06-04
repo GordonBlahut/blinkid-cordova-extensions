@@ -16,9 +16,9 @@ import android.util.Log;
 import com.microblink.MicroblinkSDK;
 import com.microblink.intent.IntentDataTransferMode;
 import com.microblink.entities.recognizers.RecognizerBundle;
+import com.microblink.plugins.cordova.overlays.OverlaySettingsSerializers;
+import com.microblink.plugins.cordova.recognizers.RecognizerSerializers;
 import com.microblink.uisettings.UISettings;
-import com.phonegap.plugins.microblink.overlays.OverlaySettingsSerializers;
-import com.phonegap.plugins.microblink.recognizers.RecognizerSerializers;
 import com.microblinkextensions.activity.DirectApiActivity;
 
 import org.apache.cordova.CallbackContext;
